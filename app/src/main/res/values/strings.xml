@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Codeforces Data</string>
+    <string name="codeforces_data">Codeforces Data</string>
+    <string name="submit">Submit</string>
+    <string name="number_of_submissions">Number of submissions</string>
+    <string name="user_handle">User Handle</string>
+    <string name="tourist">tourist</string>
+</resources>
