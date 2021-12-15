@@ -4,40 +4,30 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.textfield.TextInputEditText
 import com.yatinagg.codeforcesdata.R
 import com.yatinagg.codeforcesdata.adapter.SubmissionAdapter
 import com.yatinagg.codeforcesdata.database.AppDatabase
 import com.yatinagg.codeforcesdata.databinding.ActivityMainBinding
-import com.yatinagg.codeforcesdata.model.RetrofitService
-import com.yatinagg.codeforcesdata.repository.MainRepository
 import com.yatinagg.codeforcesdata.viewmodel.MainViewModel
-import com.yatinagg.codeforcesdata.viewmodel.MyViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
-
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     private val TAG = "MainActivity"
     private lateinit var binding: ActivityMainBinding
-
-    lateinit var viewModel: MainViewModel
-
-    private val retrofitService = RetrofitService.getInstance()
+    private val viewModel: MainViewModel by viewModels()
     private val adapter = SubmissionAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        viewModel =
-            ViewModelProvider(this, MyViewModelFactory(MainRepository(retrofitService))).get(
-                MainViewModel::class.java
-            )
 
         binding.recyclerview.adapter = adapter
 

@@ -6,8 +6,9 @@ import com.yatinagg.codeforcesdata.model.SubmissionItems
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.withContext
+import javax.inject.Inject
 
-class MainRepository constructor(private val retrofitService: RetrofitService) {
+class MainRepository @Inject constructor(private val retrofitService: RetrofitService) {
 
     fun getAllSubmissions(userHandle: String) = retrofitService.getAllSubmissions(userHandle, 1, 20)
 

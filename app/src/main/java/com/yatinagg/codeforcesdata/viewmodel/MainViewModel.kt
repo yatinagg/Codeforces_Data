@@ -8,12 +8,15 @@ import com.yatinagg.codeforcesdata.database.AppDatabase
 import com.yatinagg.codeforcesdata.model.Submission
 import com.yatinagg.codeforcesdata.model.SubmissionItems
 import com.yatinagg.codeforcesdata.repository.MainRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
-class MainViewModel constructor(private val repository: MainRepository) : ViewModel() {
+@HiltViewModel
+class MainViewModel @Inject constructor(private val repository: MainRepository) : ViewModel() {
 
     val submissionList = MutableLiveData<Submission>()
     val errorMessage = MutableLiveData<String>()
